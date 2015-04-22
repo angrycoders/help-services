@@ -1,0 +1,15 @@
+<?php
+  class HomeController {
+    public function home() {
+    	
+    	//	REQUIRE DATABASE HERE AND ASSIGN DATA TO VARIABLES
+      $first_name = 'Jon';
+      $last_name  = 'Snow';
+      require_once('modules/views/pages/home.php');
+    }
+
+    public function error() {
+      require_once('modules/views/pages/error.php');
+    }
+  }
+?>

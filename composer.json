@@ -1,0 +1,30 @@
+{
+    "name": "jkuatapp/helpInfo",
+    "description": "JKUAT App helpInfo module",
+    "license":	"MIT",
+    "authors": [
+        {
+            "name": "Oginga Steven",
+            "email": "stevilley@gmail.com",
+            "role":	"Developer"
+        }
+    ],
+    "support":	{
+        "email":	"stevilley@gmail.com"
+    },
+    "require":	{
+        "php"	:	">=5.4.0",
+        "symfony/templating": "~2.6",
+         "angrycoders/db": "dev-master"
+    },
+    "require-dev":	{
+        "phpunit/phpunit":	"~4.6"
+    },
+    "autoload":	{
+        "psr-4":	{
+            "AngryCoders\\HelpInfo\\":  "src/"
+	   
+            	
+        }
+    }
+}

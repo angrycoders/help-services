@@ -1,0 +1,15 @@
+<?php
+
+class helpInfController
+{
+
+public function inf{
+$helpCategoryList=array("PROCESSES","PROCEDURES","OTHERS");
+
+$helpContent='These categories enables a user to choose which kind of information he/she wishes to access,display on the screen or download'
+
+ require_once('modules/views/pages/display.php');
+
+}
+}
+
