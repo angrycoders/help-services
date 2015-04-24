@@ -1,4 +1,5 @@
 <?php
+
 namespace AngryCoders\HelpInfo\Router;
 
 
@@ -11,12 +12,9 @@ namespace AngryCoders\HelpInfo\Router;
 class Routes{
 	
 
-protected $controller='home';
+protected $controller='HomeController';
 protected $method='home';
 protected $params=[];
-// just a list of the controllers we have and their actions
-// we consider those "allowed" values
-protected $controllers = array('pages' => ['home', 'error'],'HelpInfo'=>['inf','error']);
 
 
 public function __construct()
@@ -26,13 +24,45 @@ public function __construct()
 	print_r($url);
 	
 	
+	
+	if(file_exists('../modules/controllers/' .$url[0].'.php'))
+	{
+		$this->controller=$url[0];
+		unset($url[0]);
+	}
+	
+	//require_once '../modules/controllers/' .$this->controller.'.php';
+	
+	$this->controller =new $this->controller;
+	
+	if (isset($url[1]))
+	{
+		if(method_exists($this->controller,$url[1]))
+		{
+			$this->method=$url[1];
+			unset($url[1]);
+		}
+	
+	}
+	
+	$this->params=$url ? array_values($url):[];
+	call_user_func_array([$this->controller,$this->method],$this->params);
+	
+	/*
+	 	
+	print_r($url);
+	
+	
 	$this->controller=$url[0];
+	unset($url[0]);
+	$this->controller =new $this->controller;
 	$this->method=$url[1];
 	unset($url[1]);
-	
+	$this->params=$url ? array_values($url):[];
+	call_user_func_array([$this->controller,$this->method],$this->params);
 	
 	//DIsplays the name of the controller and its methods
-	echo 'This is the controller::'.$this->controller.' and its method::'.$this->method;
+	echo 'This is the controller::'.$this->controller.' and its method::'.$this->method .' and its parammeters::'.$this->params;
 	
     
 	//require_once('modules/controllers/' . $this->controller .'.php');
@@ -40,13 +70,14 @@ public function __construct()
 	// create a new instance of the needed controller
 	switch($this->controller) {
 		case 'pages':
-			$this->controller = new HomeController($this->method);
+			$this->controller = new HomeController();
+			$controller->{ $this->method }();
 			break;
 		case 'help':
 			$this->controller= new HelpInfoController($this->method);
 			break;
-	}
-	$this->controller->{ $this->method }(); 
+	}*/
+	
 }
 	
 
@@ -56,7 +87,7 @@ public function parseUrl()
 {
 	if(isset($_GET['url']))
            {
-           echo $_GET['url'];
+          // echo $_GET['url'];
 	      return $url=explode('/',filter_var(rtrim($_GET['url'],'/'),FILTER_SANITIZE_URL));
 	      
     	   }
