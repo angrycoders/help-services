@@ -2,20 +2,26 @@
 
 namespace AngryCoders\HelpInfo\modules\controllers;
 
-//use  AngryCoders\HelpInfo\modules\views\pages\home;
+use  AngryCoders\HelpInfo\modules\views\Home\Homeview as Hv;
+use  AngryCoders\HelpInfo\Router\Controller;
 //use  AngryCoders\HelpInfo\modules\views\pages\error;
 
-  class HomeController {
+  class HomeController extends Controller{
+  	
+  	
+  	  	
     public function home() {
     	
-    	//	REQUIRE DATABASE HERE AND ASSIGN DATA TO VARIABLES
-      $first_name = 'Oginga ';
-      $last_name  = 'Steven';
-      require_once('src/modules/views/pages/home.php');
+    	$this->model('ParentModel');
+    	  
     }
 
+    
+    
     public function error() {
-      require_once('src/modules/views/pages/error.php');
+     // require_once ('../views/Home/error.php');
     }
+
+  
   }
 ?>
