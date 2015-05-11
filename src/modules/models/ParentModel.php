@@ -11,8 +11,8 @@ class ParentModel{
 	 * Create database helpInfo table
 	 * */
 	public function createTable(){
-		
 		$db=new Db();
+		
 	
 		try {
 		
@@ -28,7 +28,13 @@ class ParentModel{
 		}
 	}
 	
-	
+	public function viewInfo($tableName, $field, $value, $fields = array()){
+		$db=new Db();
+		
+		return  $db->getRecord($tableName, $field, $value, $fields = array());
+		
+		
+	}
 	
 	
 	

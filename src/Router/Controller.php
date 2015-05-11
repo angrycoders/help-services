@@ -8,14 +8,23 @@ class Controller
 	/*
 	 * Loads the models
 	 * */
+	
 	public function model($model) {
 	//	require_once ('../modules/models/'.$model.'.php');
 		
-		
-		$model=new ParentModel();
-		$model->createTable();
+		switch($model){
+			case 'ParentModel': $model=new ParentModel();
+								break;
+								
+								
+			case 'StaffModel':  $model=new StaffModel();
+								break;
+								
+			default :		    $model=new ParentModel();
+								break;
+			
+		}
 		return new $model();
-		;
 	}
 	
 	/*
