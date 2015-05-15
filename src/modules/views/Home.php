@@ -10,7 +10,15 @@
 		class Home {
 			
 			public function __construct($result){
-		echo "<pre>".print_r ($result->fetchAll(),true)."</pre><br />";
+		//echo "<pre>".print_r ($result->fetchAll(),true)."</pre><br />";
+				foreach($result as $row)
+				{
+					
+					echo $row['title'] . "<br>";
+					echo $row['description'] . "<br>";
+					
+				}
+				
 			}
 		}
 
